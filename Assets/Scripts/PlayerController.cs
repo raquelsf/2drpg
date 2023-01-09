@@ -118,6 +118,8 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
+        player.entity.entityAudio.PlayOneShot(player.SwordSound);
+
         if (player.entity.target == null) return;
 
         Monster monster = player.entity.target.GetComponent<Monster>();

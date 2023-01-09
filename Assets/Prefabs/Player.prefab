@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323743766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3732052, y: 1.1605337, z: -15.486156}
-  m_LocalScale: {x: 1.0742968, y: 0.97664064, z: 1.5625}
+  m_LocalPosition: {x: -0.12, y: 0.12, z: -15.486}
+  m_LocalScale: {x: 0.12438523, y: 0.15207504, z: 0.49907812}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8076599829943954262}
@@ -42,7 +42,7 @@ Camera:
   m_GameObject: {fileID: 323743766}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.39097545, g: 0.40769255, b: 0.4339623, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -56,9 +56,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 28.183884
+  near clip plane: 0.01
+  far clip plane: 10
+  field of view: 28.4
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -116,7 +116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6647645434107795902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: -1.8166691, z: 4.9933987}
+  m_LocalPosition: {x: 2, y: 1, z: 0}
   m_LocalScale: {x: 0.64, y: 0.64, z: 0.64}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -216,9 +216,12 @@ MonoBehaviour:
   expMod: 0
   levelUpFX: {fileID: 8717275489354423850, guid: 73afb4a3ff6c3084482e66be2749287c, type: 3}
   levelUpSound: {fileID: 8300000, guid: 21a267551a390eb46a3f00d8c3d5c001, type: 3}
+  SwordSound: {fileID: 8300000, guid: d7a4fabff4792ec4a82589e139de223a, type: 3}
   givePoints: 5
   respawnTime: 5
   prefab: {fileID: 6647645434107795902}
+  numOfApples: 0
+  dropItem: 0
 --- !u!114 &6435248397227103139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerAnimator: {fileID: 8020036671324432066}
+  interactKey: 101
+  startingPosition: {fileID: 11400000, guid: e0118b419058a91429718b802b673c80, type: 2}
 --- !u!95 &8020036671324432066
 Animator:
   serializedVersion: 4
@@ -318,7 +323,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.16675326}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -329,7 +334,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.71875}
+  m_Size: {x: 0.36598805, y: 0.373568}
   m_EdgeRadius: 0
 --- !u!70 &94859627
 CapsuleCollider2D:
@@ -367,7 +372,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.32019305
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

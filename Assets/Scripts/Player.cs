@@ -78,9 +78,12 @@ public class Player : MonoBehaviour
 
     public float expMod;
 
+    [Header("Sounds")]
     public GameObject levelUpFX;
 
     public AudioClip levelUpSound;
+
+    public AudioClip SwordSound;
 
     public int givePoints = 5;
 
