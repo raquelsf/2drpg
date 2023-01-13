@@ -49,6 +49,8 @@ public class Monster : MonoBehaviour
 
     Rigidbody2D rb2D;
 
+    Vector2 moveDirection;
+
     Animator animator;
 
     private void Start()
@@ -131,6 +133,17 @@ public class Monster : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "Player" && !entity.dead)
+        {
+            Debug.Log("encostou ");
+            entity.inCombat = true;
+            entity.target = collider.gameObject;
+            entity.target.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.tag == "Player" && !entity.dead)
@@ -156,7 +169,7 @@ public class Monster : MonoBehaviour
 
     void Patrol()
     {
-        if (entity.dead) return;
+        if (entity.dead || entity.inCombat) return;
 
         // calcular a distance do waypoint
         float distanceToTarget =
@@ -216,15 +229,20 @@ public class Monster : MonoBehaviour
                 !entity.target.GetComponent<Player>().entity.dead
             )
             {
-                animator.SetBool("attack", true);
-
                 float distance =
                     Vector2
                         .Distance(entity.target.transform.position,
                         transform.position);
+                Debug.Log("distance " + entity.attackDistance);
 
+                // Vector3 direction =
+                //     (entity.target.transform.position - transform.position)
+                //         .normalized;
+                // moveDirection = direction;
+                // rb2D.velocity = new Vector2(moveDirection.x, moveDirection.y);
                 if (distance <= entity.attackDistance)
                 {
+                    animator.SetBool("attack", true);
                     int dmg = manager.CalculateDamage(entity, entity.damage);
                     int targetDef =
                         manager
